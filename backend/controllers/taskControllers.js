@@ -1,4 +1,5 @@
-const Task = require('../models/Task');
+
+import Task from "../models/taskSchema.js";
 
 const addTask=async(req,res)=>{
     try {
@@ -115,7 +116,7 @@ const updateStatus = async (req, res) => {
     }
 };
 
-const Task = require('../models/Task');
+
 
 const deleteTask = async (req, res) => {
     try {
@@ -168,4 +169,4 @@ const deleteTask = async (req, res) => {
 //     }
 // }
 
-export {addTask,getAllTask,updateStatus,deleteTask,updateTask}
+export {addTask,getAllTask,updateStatus,deleteTask}

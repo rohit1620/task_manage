@@ -2,10 +2,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
 import express from 'express';
-import connectDb from './config/db';
-import authRouter from './routes/authRoute';
-import taskRouter from './routes/taskRoute';
-import userRouter from './routes/userRoute'
+import connectDb from './config/db.js';
+import authRouter from './routes/authRoute.js';
+import taskRouter from './routes/taskRoute.js';
+import userRouter from './routes/userRoute.js'
 
 const app=express();
 
@@ -21,7 +21,7 @@ app.get("/",(req,res)=>{
 
 const port=process.env.PORT;
 
-connectDb.then(()=>{
+connectDb().then(()=>{
 app.listen(port,()=>{
     console.log("server running on port",port)
 })

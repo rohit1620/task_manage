@@ -1,4 +1,4 @@
-import {addTask,getAllTask,updateStatus,deleteTask,updateTask} from "../controllers/taskControllers.js";
+import {addTask,getAllTask,updateStatus,deleteTask} from "../controllers/taskControllers.js";
 import express from 'express';
 import { authMiddleware } from "../middleware/authMiddleWare.js";
 

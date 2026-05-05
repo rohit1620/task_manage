@@ -1,4 +1,4 @@
-const User = require('../models/User');
+import User from '../models/userSchema.js';
 
 const getAllEmployees = async (req, res) => {
     try {
@@ -34,7 +34,7 @@ const getAllEmployees = async (req, res) => {
     }
 };
 
-const User = require('../models/User');
+
 
 const deleteUser = async (req, res) => {
     try {

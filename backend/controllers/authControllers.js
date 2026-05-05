@@ -1,18 +1,18 @@
 import User from '../models/userSchema.js';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 
 const register = async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
 
-     
+ 
         const userExists = await User.findOne({ email });
         if (userExists) {
             return res.status(400).json({ msg: "User with this email already exists" });
         }
         const salt=await bcrypt.genSalt(10)
-const hashPassword=await bcrypt.hash(userExists.password,salt)
+const hashPassword=await bcrypt.hash(password,salt)
        
         const newUser = new User({
             name,
@@ -50,7 +50,7 @@ const login = async (req, res) => {
         }
 
        
-        const isMatch = await user.comparePassword(password);
+      const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ msg: "Invalid Credentials (Wrong Password)" });
         }
