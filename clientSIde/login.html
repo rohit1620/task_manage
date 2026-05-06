@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow - Auth</title>
+    <link rel="stylesheet" href="./styles/login.css" />
+    <!-- Icons ke liye FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo-box">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h1>TaskFlow</h1>
+        <p>Role-based Task Management</p>
+      </div>
+
+      <div class="form-card">
+        <div class="toggle-buttons">
+          <button id="loginBtn" class="active" onclick="toggleForm('login')">
+            Sign In
+          </button>
+          <button id="registerBtn" onclick="toggleForm('register')">
+            Register
+          </button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form">
+          <div class="input-group">
+            <i class="far fa-envelope"></i>
+            <input
+              type="email"
+              placeholder="Email address"
+              id="loginEmail"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              placeholder="Password"
+              id="loginPassword"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn">
+            Sign In <i class="fas fa-chevron-right"></i>
+          </button>
+          <p class="footer-text">
+            Register with your role to get started. Admin can manage all users.
+          </p>
+        </form>
+
+        <!-- Register Form (Hidden by default) -->
+        <form id="registerForm" class="auth-form hidden">
+          <div class="input-group">
+            <i class="far fa-user"></i>
+            <input type="text" placeholder="Full Name" id="name" required />
+          </div>
+          <div class="input-group">
+            <i class="far fa-envelope"></i>
+            <input
+              type="email"
+              placeholder="Email address"
+              id="email"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-users-cog"></i>
+            <select required id="role">
+              <option value="" disabled selected>Select Role</option>
+              <option value="manager">manager</option>
+              <option value="employee">employee</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn" id="btn">
+            Create Account <i class="fas fa-chevron-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="./scripts/login.js"></script>
+  </body>
+</html>

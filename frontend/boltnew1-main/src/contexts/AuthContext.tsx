@@ -56,19 +56,69 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
+  // const signIn = async (email: string, password: string) => {
+  //   const { error } = await supabase.auth.signInWithPassword({ email, password });
+  //   return { error: error as Error | null };
+  // };
+
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error as Error | null };
-  };
+  try {
+    const response = await fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      // Agar error hai toh use throw karein taaki catch block handle kare
+      return { error: new Error(data.error || 'Login failed') };
+    }
+
+    // LocalStorage mein token save kar sakte hain
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+    }
+
+    return { error: null, data };
+  } catch (err) {
+    return { error: err as Error };
+  }
+};
+
+  // const signUp = async (email: string, password: string, fullName: string, role: string) => {
+  //   const { error } = await supabase.auth.signUp({
+  //     email,
+  //     password,
+  //     options: { data: { full_name: fullName, role } },
+  //   });
+  //   return { error: error as Error | null };
+  // };
 
   const signUp = async (email: string, password: string, fullName: string, role: string) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { full_name: fullName, role } },
+  try {
+    const response = await fetch('http://localhost:3000/auth/register', { // Aapka backend URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: fullName, email, password, role }),
     });
-    return { error: error as Error | null };
-  };
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return { error: new Error(data.error || 'Signup failed') };
+    }
+
+    return { error: null, data };
+  } catch (err) {
+    return { error: err as Error };
+  }
+};
 
   const signOut = async () => {
     await supabase.auth.signOut();

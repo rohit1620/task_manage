@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager Dashboard - TaskFlow</title>
+    <link rel="stylesheet" href="./styles/dashbord.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <nav class="sidebar">
+        <div class="logo">
+          <i class="fas fa-briefcase"></i>
+          <span>TaskFlow</span>
+        </div>
+        <ul class="nav-links">
+          <li class="active">
+            <a href="#"><i class="fas fa-th-large"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-tasks"></i> All Tasks</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-users"></i> Employees</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+          </li>
+        </ul>
+        <div class="logout">
+          <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tasks or employees..." />
+          </div>
+          <div class="user-info">
+            <span class="role-badge">Manager</span>
+            <img src="https://via.placeholder.com/40" alt="Profile" />
+          </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="icon-box blue">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="stat-info">
+              <h3>24</h3>
+              <p>Total Tasks</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="icon-box green"><i class="fas fa-user-check"></i></div>
+            <div class="stat-info">
+              <h3>12</h3>
+              <p>Active Staff</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="icon-box orange">
+              <i class="fas fa-hourglass-half"></i>
+            </div>
+            <div class="stat-info">
+              <h3>8</h3>
+              <p>Pending</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-layout">
+          <!-- Assign Task Section -->
+          <section class="task-assignment">
+            <h2><i class="fas fa-plus-circle"></i> Assign New Task</h2>
+            <form id="assignTaskForm">
+              <input
+                type="text"
+                id="taskTitle"
+                placeholder="Task Title"
+                required
+              />
+              <select id="employeeSelect" required>
+                <option value="" disabled selected>Select Employee</option>
+                <option value="Aman">Aman Sharma</option>
+                <option value="Rahul">Rahul Malav</option>
+                <option value="Priya">Priya Verma</option>
+              </select>
+              <textarea
+                id="taskDesc"
+                placeholder="Task Description..."
+                rows="3"
+              ></textarea>
+              <button type="submit" class="primary-btn">Assign Task</button>
+            </form>
+          </section>
+
+          <!-- Employee Progress Section -->
+          <section class="employee-data">
+            <h2><i class="fas fa-users"></i> Employee Progress</h2>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Current Task</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="employeeTableBody">
+                  <!-- Dynamic Data via JS -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./scripts/dashbord.js"></script>
+  </body>
+</html>

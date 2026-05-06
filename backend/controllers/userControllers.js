@@ -3,18 +3,18 @@ import User from '../models/userSchema.js';
 const getAllEmployees = async (req, res) => {
     try {
        
-        const { id, role } = req.user;
+        // const { id, role } = req.user;
         
         let query = {};
 
      
-         if (role === 'manager') {
+        //  if (role === 'manager') {
         
-            query = { role: 'employee', managerId: id };
-        } else {
+            query = { role: 'employee', managerId: "54321" };
+        // } else {
         
-            return res.status(403).json({ msg: "Employees cannot view employee lists" });
-        }
+        //     return res.status(403).json({ msg: "Employees cannot view employee lists" });
+        // }
 
         
         const employees = await User.find(query).select('-password').sort({ createdAt: -1 });

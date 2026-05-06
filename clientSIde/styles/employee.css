@@ -1,0 +1,81 @@
+:root {
+    --bg: #050a18;
+    --card: #111827;
+    --accent: #2563eb;
+    --text: #ffffff;
+}
+
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+
+.task-card {
+    background: var(--card);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #1f2937;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Circular Progress Logic */
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 40px 0;
+}
+
+.circular-progress {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+svg { width: 150px; height: 150px; transform: rotate(-90deg); }
+svg circle {
+    fill: none;
+    stroke: #1f2937;
+    stroke-width: 10;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+#progressCircle {
+    stroke: var(--accent);
+    stroke-dashoffset: 396; /* 10% initially (440 - 44) */
+    transition: stroke-dashoffset 0.8s ease;
+}
+
+.number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Control Buttons */
+.btn-grid { display: flex; gap: 10px; margin-top: 15px; }
+.btn-grid button {
+    background: #1e293b;
+    color: white;
+    border: 1px solid var(--accent);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-grid button:hover { background: var(--accent); }
+
+.warning { color: #94a3b8; font-size: 12px; font-style: italic; }
+
+.roadmap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #1f2937;
+}
+
+.step { color: #4b5563; font-size: 13px; }
+.step.active { color: var(--accent); font-weight: bold; }

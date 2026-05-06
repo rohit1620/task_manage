@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Execution - TaskFlow</title>
+    <link rel="stylesheet" href="./styles/employee.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="emp-container">
+      <!-- Sidebar and Header (Same as previous) -->
+      <main class="emp-main">
+        <header class="emp-header">
+          <h2>Task Tracking System</h2>
+          <div id="taskTimeline">Deadline: 26 May 2026 (20 Days Left)</div>
+        </header>
+
+        <section class="task-card">
+          <div class="task-info">
+            <span class="badge">In Progress</span>
+            <h1>Website Redesign Project</h1>
+            <p>Total Duration: <strong>20 Days</strong></p>
+          </div>
+
+          <!-- Progress Visualizer -->
+          <div class="progress-container">
+            <div class="circular-progress">
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle id="progressCircle" cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="percentDisplay">10%</h2>
+              </div>
+            </div>
+
+            <div class="control-box">
+              <h3>Update Daily Progress</h3>
+              <p class="warning">*Progress can only move forward.</p>
+
+              <div class="btn-grid">
+                <button onclick="incrementProgress(5)">+5%</button>
+                <button onclick="incrementProgress(10)">+10%</button>
+                <button onclick="incrementProgress(20)">+20%</button>
+              </div>
+
+              <div class="status-msg" id="statusMsg">Task started at 10%</div>
+            </div>
+          </div>
+
+          <!-- Task Roadmap -->
+          <div class="roadmap">
+            <div class="step active">Day 1: Start (10%)</div>
+            <div class="step" id="step50">Milestone: Halfway (50%)</div>
+            <div class="step" id="step100">Completion (100%)</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./scripts/employee.js"></script>
+  </body>
+</html>
